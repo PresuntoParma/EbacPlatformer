@@ -150,7 +150,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 317599302}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 765da33e52d08d741b770db4dec7f830, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -378,8 +378,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 919364820}
-  velocity: {x: 30, y: 0}
+  friction: {x: 0.1, y: 0}
   speed: 10
+  speedRun: 17
   jumpForce: 15
 --- !u!50 &919364820
 Rigidbody2D:
@@ -547,7 +548,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1422095053}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 765da33e52d08d741b770db4dec7f830, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -677,7 +678,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1540958844}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 765da33e52d08d741b770db4dec7f830, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

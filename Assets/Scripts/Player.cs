@@ -11,7 +11,10 @@ public class Player : MonoBehaviour
     public Vector2 friction = new Vector2(0.1f, 0f);
 
     public float speed;
+    public float speedRun;
     public float jumpForce;
+
+    private float currentSpeed;
 
     void Update()
     {
@@ -21,13 +24,22 @@ public class Player : MonoBehaviour
 
     private void Walk()
     {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            currentSpeed = speedRun;
+        }
+        else
+        {
+            currentSpeed = speed;
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            rb.velocity = new Vector2(-currentSpeed, rb.velocity.y);
         }
 
         if (rb.velocity.x > 0)
