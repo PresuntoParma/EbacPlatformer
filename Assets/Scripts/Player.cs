@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     private float jumpScaleX = 0.7f;
     public Ease ease = Ease.OutBack;
 
+    [Header("Animator")]
+    public string boolRun = "pRun";
+    public Animator anim;
+
     void Update()
     {
         Jump();
@@ -45,10 +49,26 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
+            anim.SetBool("pRun", true);
+            //rb.transform.localScale = new Vector2(1, 1);
+            if (rb.transform.localScale.x != 1)
+            {
+                rb.transform.DOScaleX(1, 0.1f);
+            }
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             rb.velocity = new Vector2(-currentSpeed, rb.velocity.y);
+            anim.SetBool("pRun", true);
+            //rb.transform.localScale = new Vector2(-1, 1);
+            if (rb.transform.localScale.x != -1)
+            {
+                rb.transform.DOScaleX(-1, 0.1f);
+            }
+        }
+        else
+        {
+            anim.SetBool("pRun", false);
         }
 
         if (rb.velocity.x > 0)
