@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     public bool destroyOnKill = false;
     public float delayToKill;
 
+    public FlashColor flashColor;
+
     private void Awake()
     {
         Init();
@@ -28,6 +30,8 @@ public class Health : MonoBehaviour
         if (isDead) return;
 
         currentHealth -= damage;
+
+        flashColor.Flash();
 
         if (currentHealth <= 0)
         {
