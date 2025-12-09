@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
 
     [Header("Animation")]
     public float animationDuration = 0.3f;
-    private float jumpScaleY = 1.5f;
-    private float jumpScaleX = 0.7f;
+    public float jumpScaleY = 1.5f;
+    public float jumpScaleX = 0.7f;
     public Ease ease = Ease.OutBack;
 
     [Header("Animator")]
