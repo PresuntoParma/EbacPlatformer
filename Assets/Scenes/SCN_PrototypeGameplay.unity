@@ -2792,6 +2792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: 0
+  textCoins: {fileID: 741452967}
 --- !u!4 &1142988256
 Transform:
   m_ObjectHideFlags: 0
