@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a8cccf892b7c246971431272c7d4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 10, y: 0}
+  direction: {x: 20, y: 0}
+  timeToDestroy: 2
 --- !u!1 &8343920658899387988
 GameObject:
   m_ObjectHideFlags: 0

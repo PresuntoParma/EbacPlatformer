@@ -24,4 +24,9 @@ public class Enemy : MonoBehaviour
     {
         anim.SetTrigger(attackTrigger);
     }
+
+    public void Damage(int ammount)
+    {
+
+    }
 }

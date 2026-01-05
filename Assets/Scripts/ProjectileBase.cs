@@ -6,9 +6,29 @@ public class ProjectileBase : MonoBehaviour
 {
     public Vector2 direction;
 
+    public float timeToDestroy = 2f;
+
+    public float side = 1;
+
+    public int damageAmmount = 1;
+    private void Awake()
+    {
+        Destroy(gameObject, timeToDestroy);
+    }
 
     void Update()
     {
-        transform.Translate(direction * Time.deltaTime);
+        transform.Translate(direction * Time.deltaTime * side);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var enemy = collision.gameObject.GetComponent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.Damage(damageAmmount);
+            Destroy(gameObject);
+        }
     }
 }
