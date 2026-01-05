@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public Action onKill;
+
     public int maxHealth = 10;
 
     private int currentHealth;
@@ -47,5 +50,7 @@ public class Health : MonoBehaviour
         {
             Destroy(this.gameObject, delayToKill);
         }
+
+        onKill.Invoke();
     }
 }

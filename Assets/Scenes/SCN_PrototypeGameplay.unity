@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  destroyOnKill: 1
+  destroyOnKill: 0
   delayToKill: 0
   flashColor: {fileID: 1487503078}
 --- !u!114 &1487503078
@@ -3465,7 +3465,7 @@ MonoBehaviour:
   - {fileID: 1430753799}
   - {fileID: 1959099034}
   color: {r: 1, g: 0, b: 0, a: 1}
-  duration: 0.1
+  duration: 0.005
 --- !u!212 &1525443533 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8789406625549365556, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
@@ -4867,7 +4867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4667783105077431243, guid: 7e9c9c2dc4a03d94bb9c3e093a8d5ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.52
+      value: -13.6
       objectReference: {fileID: 0}
     - target: {fileID: 4667783105077431243, guid: 7e9c9c2dc4a03d94bb9c3e093a8d5ae9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4905,6 +4905,14 @@ PrefabInstance:
       propertyPath: healthBase
       value: 
       objectReference: {fileID: 1487503076}
+    - target: {fileID: 6882775596381500504, guid: 7e9c9c2dc4a03d94bb9c3e093a8d5ae9, type: 3}
+      propertyPath: killTrigger
+      value: Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882775596381500504, guid: 7e9c9c2dc4a03d94bb9c3e093a8d5ae9, type: 3}
+      propertyPath: timeToDestroy
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
