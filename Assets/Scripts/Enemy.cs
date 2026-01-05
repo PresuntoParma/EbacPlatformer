@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public string attackTrigger;
 
+    public Health healthBase;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var health = collision.gameObject.GetComponent<Health>();
@@ -27,6 +29,6 @@ public class Enemy : MonoBehaviour
 
     public void Damage(int ammount)
     {
-
+        healthBase.Damage(ammount);
     }
 }
