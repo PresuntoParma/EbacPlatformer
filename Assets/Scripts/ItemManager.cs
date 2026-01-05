@@ -7,9 +7,20 @@ public class ItemManager : Singleton<ItemManager>
 {
     public int coins;
 
+    public static ItemManager Instance;
+
     private void Awake()
     {
-        Reset();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+            Reset();
     }
 
     public void Reset()
