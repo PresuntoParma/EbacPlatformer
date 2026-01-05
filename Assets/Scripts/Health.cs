@@ -51,6 +51,6 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject, delayToKill);
         }
 
-        onKill.Invoke();
+        onKill?.Invoke();
     }
 }

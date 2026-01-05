@@ -2211,7 +2211,9 @@ MonoBehaviour:
   jumpScaleX: 0.7
   ease: 27
   boolRun: pRun
+  triggerDeath: pDeath
   anim: {fileID: 1676421093}
+  health: {fileID: 919364824}
 --- !u!50 &919364820
 Rigidbody2D:
   serializedVersion: 4
@@ -2313,8 +2315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  destroyOnKill: 1
-  delayToKill: 0.2
+  destroyOnKill: 0
+  delayToKill: 1
   flashColor: {fileID: 1676421095}
 --- !u!1 &930153103
 GameObject:
@@ -3700,6 +3702,19 @@ MonoBehaviour:
   - {fileID: 1204197310}
   color: {r: 1, g: 0, b: 0, a: 1}
   duration: 0.1
+--- !u!114 &1676421096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820797803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c8ed7d6a6599549b5121c8df7ad2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 919364819}
 --- !u!212 &1679797693 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4546307769011690981, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
@@ -4786,6 +4801,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1676421095}
+    - targetCorrespondingSourceObject: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1676421096}
   m_SourcePrefab: {fileID: 100100000, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
 --- !u!212 &2140594013 stripped
 SpriteRenderer:
