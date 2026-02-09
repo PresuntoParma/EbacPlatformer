@@ -8,32 +8,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
-
-
-    [Header("Movement")]
-    public Vector2 friction = new Vector2(0.1f, 0f);
-
-    public float speed;
-    public float speedRun;
-    public float jumpForce;
-
     private float currentSpeed;
-
-    [Header("Animation")]
-    public float animationDuration = 0.3f;
-    public float jumpScaleY = 1.5f;
-    public float jumpScaleX = 0.7f;
-    public SOFloat soJumpScaleY;
-    public SOFloat soJumpScaleX;
-    public SOFloat soAnimationDuration;
-    public Ease ease = Ease.OutBack;
-
-    [Header("Animator")]
-    public string boolRun = "pRun";
-    public string triggerDeath;
     public Animator anim;
-
     public Health health;
+
+    [Header("Setup")]
+    public SOPlayerSetup soPlayerSetup;
 
     private void Awake()
     {
@@ -46,7 +26,7 @@ public class Player : MonoBehaviour
     {
         health.onKill -= OnPlayerKill;
 
-        anim.SetTrigger(triggerDeath);
+        anim.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     void Update()
@@ -59,11 +39,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            currentSpeed = speedRun;
+            currentSpeed = soPlayerSetup.speedRun;
         }
         else
         {
-            currentSpeed = speed;
+            currentSpeed = soPlayerSetup.speed;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -93,11 +73,11 @@ public class Player : MonoBehaviour
 
         if (rb.velocity.x > 0)
         {
-            rb.velocity -= friction;
+            rb.velocity -= soPlayerSetup.friction;
         }
         else if (rb.velocity.x < 0)
         {
-            rb.velocity += friction;
+            rb.velocity += soPlayerSetup.friction;
         }
     }
 
@@ -105,7 +85,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jumpForce;
+            rb.velocity = Vector2.up * soPlayerSetup.jumpForce;
             rb.transform.localScale = Vector2.one;
             DOTween.Kill(rb.transform);
             ScaleJump();
@@ -114,8 +94,8 @@ public class Player : MonoBehaviour
 
     private void ScaleJump()
     {
-        rb.transform.DOScaleY(soJumpScaleY.value, soAnimationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        rb.transform.DOScaleX(soJumpScaleX.value, soAnimationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        rb.transform.DOScaleY(soPlayerSetup.jumpScaleY, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
+        rb.transform.DOScaleX(soPlayerSetup.jumpScaleX, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
     }
 
     public void DestroyMe()
