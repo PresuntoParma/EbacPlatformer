@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c2ff2b07cfc794185615e2ea72a72b, type: 3}
   m_Name: SOFloat_ScaleX
   m_EditorClassIdentifier: 
-  value: 0
+  value: 0.7

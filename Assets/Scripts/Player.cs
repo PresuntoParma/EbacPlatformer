@@ -9,14 +9,18 @@ public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
     private float currentSpeed;
-    public Animator anim;
+    //public Animator anim;
     public Health health;
+
+    private Animator currentPlayer;
 
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
 
     private void Awake()
     {
+        currentPlayer = Instantiate(soPlayerSetup.player, transform);
+
         if (health != null)
         {
             health.onKill += OnPlayerKill;
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     {
         health.onKill -= OnPlayerKill;
 
-        anim.SetTrigger(soPlayerSetup.triggerDeath);
+        currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     void Update()
@@ -49,7 +53,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
-            anim.SetBool("pRun", true);
+            currentPlayer.SetBool("pRun", true);
             //rb.transform.localScale = new Vector2(1, 1);
             if (rb.transform.localScale.x != 1)
             {
@@ -59,7 +63,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             rb.velocity = new Vector2(-currentSpeed, rb.velocity.y);
-            anim.SetBool("pRun", true);
+            currentPlayer.SetBool("pRun", true);
             //rb.transform.localScale = new Vector2(-1, 1);
             if (rb.transform.localScale.x != -1)
             {
@@ -68,7 +72,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            anim.SetBool("pRun", false);
+            currentPlayer.SetBool("pRun", false);
         }
 
         if (rb.velocity.x > 0)
