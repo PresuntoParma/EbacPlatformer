@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
 
+    [Header("jump collision check")]
+    public Collider2D collider2D;
+    public float disToGround;
+    public float spaceToGround = .1f;
+    public ParticleSystem jumpVFX;
+
     private void Awake()
     {
         currentPlayer = Instantiate(soPlayerSetup.player, transform);
@@ -25,7 +31,15 @@ public class Player : MonoBehaviour
         {
             health.onKill += OnPlayerKill;
         }
+
+        disToGround = collider2D.bounds.extents.y;
     }
+
+    private void IsGrounded()
+    {
+        Debug.DrawRay(transform.position, Vector2.down, Color.magenta, disToGround + spaceToGround);
+    }
+
     private void OnPlayerKill()
     {
         health.onKill -= OnPlayerKill;
@@ -37,6 +51,7 @@ public class Player : MonoBehaviour
     {
         Jump();
         Walk();
+        IsGrounded();
     }
 
     private void Walk()
@@ -93,7 +108,13 @@ public class Player : MonoBehaviour
             rb.transform.localScale = Vector2.one;
             DOTween.Kill(rb.transform);
             ScaleJump();
+            PlayJumpVFX();
         }
+    }
+
+    private void PlayJumpVFX()
+    {
+        jumpVFX.Play();
     }
 
     private void ScaleJump()
